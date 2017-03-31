@@ -1,0 +1,17 @@
+<h1>Todos</h1>
+
+    <div class="form-group col-md-12">
+        <input type="text" 
+        class="form-control col-md-10" 
+        id="exampleInputEmail1" 
+        placeholder="What needs to be done"
+        [(ngModel)]="test"
+        (keyup.enter)="addTodo()">
+    </div>
+
+
+<ul>
+    <li *ngFor="let todo of todos">
+        {{ todo }}
+    </li>
+</ul>
