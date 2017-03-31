@@ -5,16 +5,40 @@ import { TodoService } from './todo.service'
 @Component({
     selector: 'todo',
     templateUrl: './todo.html',
-    providers: [TodoService]
+    providers: [TodoService],
+    styles: [
+        `
+        .todo-list{
+            margin-top: 2em;
+            list-style-type: none;
+            font-weight: bold;
+        }
+        .delete{
+            margin-left: 15em;
+            cursor: pointer;
+        }
+        `
+    ]
 })
 
 export class TodoComponent {
-    test;
+    newTodo;
     todos;
-    isFavorite;
+    ifHover = false;
+    public show:number;
     
     addTodo(){
-        console.log(this.test + "- TODOS")
+        this.todos.push(this.newTodo);
+    }
+
+    hover(hoverState, index){
+    
+        this.show = index;
+        if(hoverState == 'hoverActive'){
+            this.show = index;
+        } else {
+            this.show = null;
+        }
     }
     
     constructor(todoService: TodoService){

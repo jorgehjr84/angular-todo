@@ -5,13 +5,19 @@
         class="form-control col-md-10" 
         id="exampleInputEmail1" 
         placeholder="What needs to be done"
-        [(ngModel)]="test"
+        [(ngModel)]="newTodo"
         (keyup.enter)="addTodo()">
     </div>
 
 
 <ul>
-    <li *ngFor="let todo of todos">
+    <li 
+    class="todo-list"
+    *ngFor="let todo of todos; let i = index"
+    (mouseenter)="hover('hoverActive', i)"
+    (mouseleave)="hover('hoverInactive', i)">
         {{ todo }}
+        <span class="pull-right delete" *ngIf="show == i">x</span>
     </li>
+    
 </ul>
